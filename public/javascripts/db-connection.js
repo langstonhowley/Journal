@@ -4,9 +4,12 @@ require('dotenv').config()
 
 module.exports = function (_callback) {
     mongo.connect(process.env.DB_URL, {useUnifiedTopology: true},(err, client) => {
-        if(err) return debug('Error on connection to DB:\n' + err)
+        if(err){
+            debug('Error on connection to DB:\n' + err)
+            _callback({"error": err})
+        } 
         debug('Connected to db!')
         
-        _callback(client.db())
+        _callback({"db": client.db()})
     })   
 }

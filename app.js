@@ -13,10 +13,6 @@ const dbConnection = require('./public/javascripts/db-connection');
 
 const app = express();
 
-// view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
-
 //Logger
 app.use(volleyball);
 
@@ -39,6 +35,10 @@ app.use(function(req, res, next) {
 	next(createError(404));
 });
 
+app.use(function(req, res, next) {
+	next(createError(500));
+});
+
 // error handler
 app.use(function(err, req, res, next) {
 	// set locals, only providing error in development
@@ -53,7 +53,8 @@ app.use(function(err, req, res, next) {
 
 var port = process.env.PORT || 3000
 dbConnection((db) => {
-    app.listen(port, () => debug("Listening at http://localhost:"+port))
+    if(!db.error)
+        app.listen(port, () => debug("Listening at http://localhost:"+port))
 })
 
 

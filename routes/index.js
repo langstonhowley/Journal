@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var debug = require('debug')('app:index')
-const mongo = require('mongodb').MongoClient
 require('dotenv').config()
 
 /* GET home page. */
