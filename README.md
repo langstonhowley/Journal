@@ -17,12 +17,35 @@ There is currently no frontend and I'm highly doubting making one so I use [cURL
   - /text
     - Sends the raw text input
 
-### Example Entry
+  ### Example Entry
 
-```bash
-#Sending text to the journal
-curl -F text="Hello World" --url http://localhost:3000/entry/text
+  ```bash
+  #Sending text to the journal
+  curl -F text="Hello World" --url http://localhost:3000/entry/text
 
-#Sending a file to the journal
-curl -F file=@path/to/local/file.txt --url http://localhost:3000/entry/file
-```
+  #Sending a file to the journal
+  curl -F file=@path/to/local/file.txt --url http://localhost:3000/entry/file
+  ```
+
+- /journal
+
+  Parameters Include:
+  
+  - limit=LIMIT
+    - The amount of entries returned
+  - search=SEARCH_TEXT
+    - Only show items including this search text
+  - start=START_DATE
+    - Only show entries entered AFTER this date
+  - end=END_DATE
+    - Only show entries entered BEFORE this date
+  
+  ### Example Entry
+
+  ```bash
+  #Getting every entry in the journal
+  curl --url http://localhost:3000/journal
+
+  #Paramaterizing the url
+  curl --url "http://localhost:3000/journal?limit=3&search=test&end=03-15-2020"
+  ```

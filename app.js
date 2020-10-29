@@ -7,7 +7,7 @@ const volleyball = require('volleyball');
 const debug = require('debug')('app:server');
 
 
-const index = require('./routes/index');
+const journal = require('./routes/journal');
 const journalEntry = require('./routes/entry');
 const dbConnection = require('./public/javascripts/db-connection');
 
@@ -27,7 +27,7 @@ app.use(formData.union());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.use('/journal', journal);
 app.use('/entry', journalEntry);
 
 // catch 404 and forward to error handler

@@ -30,7 +30,7 @@ router.post('/file', function(req, res, next) {
 				}
 				else{
 					debug(db.error)
-					next(error)
+					next(db.error)
 				}
 			})
 		}
