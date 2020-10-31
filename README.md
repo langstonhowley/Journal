@@ -9,6 +9,9 @@ There is currently no frontend and I'm highly doubting making one so I use [cURL
 ## Routes
 
 - /entry
+
+  - /entry?{entry_id}
+    - Gets a single entry with the database id of `{entry_id}`
   
   With a multipart/form-data POST request a journal entry can be sent by:
 
@@ -49,3 +52,4 @@ There is currently no frontend and I'm highly doubting making one so I use [cURL
   #Paramaterizing the url
   curl --url "http://localhost:3000/journal?limit=3&search=test&end=03-15-2020"
   ```
+  

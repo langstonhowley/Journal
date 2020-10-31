@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 				findObject.text = { $regex: searchText}//"/.*{0}.*/".replace("{0}", searchText)}
 
 				debug(findObject)
-				db.db.collection('entries').find(findObject,{projection: { _id: 0 }}).toArray((err,result) => {
+				db.db.collection('entries').find(findObject).toArray((err,result) => {
 					if(err) throw err;
 
 					result = result.slice(0, Math.min(limit, result.length))
